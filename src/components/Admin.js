@@ -20,11 +20,14 @@ const Admin=(props)=>{
     const obj={expenseamount:sellingPrice,description:productName,orderedId:productId};
     const obj1=JSON.stringify(obj);
     localStorage.setItem(productId,obj1);
+    setProductId("");
+    setSellingPrice("");
+    setProductName("");
     
   }
 return(
     <React.Fragment>
-         <form onSubmit={submitHandler}>
+         <form onSubmit={submitHandler} className="form">
             <div>
                 <InputData
                  id="Id"
@@ -51,16 +54,6 @@ return(
             </div>
           </form>
           
-          {/*<div>
-           <h2>Total Value Worth of Products:</h2>
-            <InputData
-            id="total"
-            label=""
-            type="number"
-            value={totalValue}
-            onChange={totalChangehandler}
-            />
-          </div>*/}
     </React.Fragment>
 )
 }

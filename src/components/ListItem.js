@@ -7,9 +7,7 @@ const deleteHandler=()=>{
 }
 return(
       <div>
-        {props.price}
-        {"-"}
-        {props.name}
+        {props.price}{"-"}{props.name}{" "}
         <button  type="button" onClick={deleteHandler}>Delete Product</button>
       </div>
 )
