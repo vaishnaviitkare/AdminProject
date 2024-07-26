@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React,{useState} from "react";
+import Admin from "./components/Admin";
+import List from "./components/List";
 function App() {
+  const[inputDetails,setInputDetails]=useState([]);
+  const addHandler=(pId,price,name)=>{
+     setInputDetails((prevState)=>{
+        return [...prevState,{Id:pId,price:price,name:name}];
+     })
+  }
+  const deleteHandler=(id)=>{
+   const arr=inputDetails.filter((value)=>{
+       return value.Id != id;
+   })
+    setInputDetails(arr);
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Admin onAddDetails={addHandler}/>
+      <h1>Products</h1>
+      <List inputData={inputDetails} onDelete={deleteHandler}/>
+      <Total></Total>
     </div>
   );
 }
